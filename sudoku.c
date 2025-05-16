@@ -132,7 +132,7 @@ Node* DFS(Node* initial, int* cont){
   push(S, initial); //meto  el nodo como en el ejemplo
   cont = 0; //creo el contador pedido
 
-  while (get_size(S) != 0){ //mientras que hayan elementos en la fila
+  while (size(S) != 0){ //mientras que hayan elementos en la fila
     Node* n = top(initial);
     pop(S); //eliminamos el actual
     cont++; //aumentamos el contador
