@@ -132,8 +132,9 @@ Node* DFS(Node* initial, int* cont){
   push(S, initial); //meto  el nodo como en el ejemplo
   cont = 0; //creo el contador pedido
 
-  while (size(S) != 0){ //mientras que hayan elementos en la fila
-    Node* n = pop(S); //eliminamos el actual
+  while (get_size(S) != 0){ //mientras que hayan elementos en la fila
+    Node* n = top(initial);
+    pop(S); //eliminamos el actual
     cont++; //aumentamos el contador
     if (is_final(n)) return n; // si da una solucion al sudoku, ta bien y termina
 
