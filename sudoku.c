@@ -50,8 +50,27 @@ int is_valid(Node* n){
 
 
 List* get_adj_nodes(Node* n){
-    List* list=createList();
-    return list;
+  List* list=createList();
+
+  int fila = -1, col = -1;
+  for (int i = 0; i < 9 && fila == -1; i++) { //recorrer matriz
+    for (int j = 0; j < 9; j++) {
+      if (n->sudo[i][j] == 0) { //si encuentra casilla valida
+        fila = i;
+        col = j;
+        break;
+      }
+    }
+  }
+  if (fila == -1) return list;
+
+  for (int k = 0 ; 0 < 9 ; k++){
+    Node* newNode = copy(n);
+    newNode->sudo[fila][col] = k;
+    pushBack(list, newNode);
+  }
+
+  return list;
 }
 
 
