@@ -49,7 +49,7 @@ int is_valid(Node* n){
   2- No debe repetirse un numero en una fila
   3- No debe repetirse un numero en una sub matriz
   */
-
+//verificar jas filas
 for (int fila = 0; fila < 9; fila++) {
     int usados[10] = {0}; // lista con los numeros posibles
     for (int col = 0; col < 9; col++) {
@@ -59,7 +59,7 @@ for (int fila = 0; fila < 9; fila++) {
         usados[valor] = 1; // el numero de esa posicion existe ahora
     }
 }
-
+//verificar columnas
 for (int col = 0; col < 9; col++) {
     int usados[10] = {0}; //lista con los nuneros posibles
     for (int fila = 0; fila < 9; fila++) {
@@ -69,8 +69,22 @@ for (int col = 0; col < 9; col++) {
         usados[valor] = 1; // el numero de esa posicion ya existe
     }
 }
-
-    return 1;
+//verificacion submatriz
+for (int iniFila = 0; iniFila < 9; iniFila += 3) { //recorro las filas de 3 en 3 porque una submatriz es de 3 cosos
+    for (int iniCol = 0; iniCol < 9; iniCol += 3) { // recorro las columnas de 3 en 3 porque una submatriz es de 3 cosos 
+        int usados[10] = {0}; //lista con los numeros posibles
+        //recorrer la submatriz
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int valor = n->sudo[iniFila + i][iniCol + j]; //valor en las matriz completa pero en la submatriz
+                if (valor == 0) continue;
+                if (usados[valor]) return 0;
+                usados[valor] = 1;
+            }
+        }
+    }
+}
+return 1;
 }
 
 
