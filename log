@@ -95,3 +95,18 @@ list.h:32:7: note: expected 'Stack * {aka struct List *}' but argument is of typ
        ^~~
 cc1.exe: all warnings being treated as errors
 01cca60
+Fri, May 16, 2025  7:54:49 PM: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'DFS':
+sudoku.c:136:19: error: passing argument 1 of 'top' from incompatible pointer type [-Werror=incompatible-pointer-types]
+     Node* n = top(initial);
+                   ^~~~~~~
+In file included from test.c:4:0:
+list.h:32:7: note: expected 'Stack * {aka struct List *}' but argument is of type 'Node * {aka struct <anonymous> *}'
+ void* top(Stack* s);
+       ^~~
+cc1.exe: all warnings being treated as errors
+16327b6
