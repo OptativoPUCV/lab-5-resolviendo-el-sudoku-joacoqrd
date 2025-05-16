@@ -51,6 +51,7 @@ int is_valid(Node* n){
 
 List* get_adj_nodes(Node* n){
   List* list=createList();
+  if (n == NULL) return list;
 
   int fila = -1, col = -1;
   for (int i = 0; i < 9 && fila == -1; i++) { //recorrer matriz
