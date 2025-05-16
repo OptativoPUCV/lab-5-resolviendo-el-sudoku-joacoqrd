@@ -44,6 +44,31 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
+  /*
+  1- No debe repetirse un numero en una columna
+  2- No debe repetirse un numero en una fila
+  3- No debe repetirse un numero en una sub matriz
+  */
+
+for (int fila = 0; fila < 9; fila++) {
+    int usados[10] = {0}; // lista con los numeros posibles
+    for (int col = 0; col < 9; col++) {
+        int valor = n->sudo[fila][col];
+        if (valor == 0) continue; // 0 = vacio = ignorar
+        if (usados[valor]) return 0; // si ya el valor ya existe en la lista returna 0
+        usados[valor] = 1; // el numero de esa posicion existe ahora
+    }
+}
+
+for (int col = 0; col < 9; col++) {
+    int usados[10] = {0}; //lista con los nuneros posibles
+    for (int fila = 0; fila < 9; fila++) {
+        int valor = n->sudo[fila][col];
+        if (valor == 0) continue; // 0 = vacio = ignorar
+        if (usados[valor]) return 0; //si el valor ya existe en la lista returna 0
+        usados[valor] = 1; // el numero de esa posicion ya existe
+    }
+}
 
     return 1;
 }
