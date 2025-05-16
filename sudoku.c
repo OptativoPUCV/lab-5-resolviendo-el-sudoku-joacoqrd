@@ -128,6 +128,24 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
+  Stack* S = createStack(); //creo la pila como en el ejemplo
+  push(S, initial); //meto  el nodo como en el ejemplo
+  cont = 0; //creo el contador pedido
+
+  while (size(S) != 0){ //mientras que hayan elementos en la fila
+    Node* n = pop(S); //eliminamos el actual
+    cont++; //aumentamos el contador
+    if (is_final(n)) return n; // si da una solucion al sudoku, ta bien y termina
+
+    List* adjNodes = get_adj_nodes(n); //creo una lista con las opciones validas
+    Node* aux = first(adjNodes); 
+
+    while (aux != NULL){
+      push (S, aux); //agrego una nueva posible solucion a la pila
+      aux = next(adjNodes);
+    }
+    free (n);
+  }
   return NULL;
 }
 
